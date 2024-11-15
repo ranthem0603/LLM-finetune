@@ -8,7 +8,7 @@ from trl import SFTTrainer
 4
 def train():
   train_dataset = load_dataset("tatsu-lab/alpaca", split="train") # can also use the local dataset
-  tokenizer = AutoTokenizer.from_pretrained("Salesforce/xgen-7b-8k-base", truse_remote_code=True)
+  tokenizer = AutoTokenizer.from_pretrained("Salesforce/xgen-7b-8k-base", trust_remote_code=True)
   tokenizer.pad_token = tokenizer.eos_token
   model = AutoModelForCausalLM.from_pretrained(
     "Salesforce/xgen-7b-8k-base", 
