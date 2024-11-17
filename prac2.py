@@ -19,5 +19,12 @@ training_args = TrainingArguments(
     learning_rate = 2e-5, 
     per_device_train_batch_size = 16,  # Batch size
     num_train_epochs = 3, 
-  
 )
+# Use trainer for fine-tuning
+trainer = Trainer(
+    model = model,
+    args = training_args,
+    train_dataset = tokenized_dataset["train"],
+    eval_dataset = tokenized_dataset["test"],
+)
+trainer.train()
