@@ -8,8 +8,9 @@ model = AutoModelForSequenceClassification.from_pretrained(model_name, num_label
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 # Load dataset
-dataset = load_dataset("imdb")
-tokenized_dataset = dataset.map(lambda x: tokenizer(x['text'], truncation=True, padding="max_length"), batched=True)
+dataset = load_dataset("imdb")    # Including "train" dataset and "test" dataset in it
+tokenized_dataset = dataset.map(lambda x: tokenizer(x['text'], truncation=True, padding="max_length"), batched=True)    # In .map() will exec the function in subset "train" and "test"
+                                                                                                                        # After this process will still be DatasetDict({"train": tokenized_train_dataset, "test": tokenized_test_dataset})
 
 # Set the training param
 training_args = TrainingArguments(
