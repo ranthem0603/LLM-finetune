@@ -3,7 +3,7 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer, Trai
 from datasets import load_dataset
 #%%
 # Load the pretrained model and tokenizer
-model_name = "bert-base-uncased"
+model_name = "bert-base-uncased"            # All words would be lower case
 model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels = 2)
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
