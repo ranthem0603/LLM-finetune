@@ -9,7 +9,7 @@ from trl import SFTTrainer
 def train():
   train_dataset = load_dataset("tatsu-lab/alpaca", split="train") # can also use the local dataset
   tokenizer = AutoTokenizer.from_pretrained("Salesforce/xgen-7b-8k-base", trust_remote_code=True)
-  tokenizer.pad_token = tokenizer.eos_token
+  tokenizer.pad_token = tokenizer.eos_token  # Using padding make sure input sequences have same length
   model = AutoModelForCausalLM.from_pretrained(
     "Salesforce/xgen-7b-8k-base", # Larger Language model for generating
     load_in_4bit = True,
